@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="" type="text/css">
+	<style>
+		.ricardo { width: 50px; height: 50px; border: 1px solid black; }
+		#lucy { background-color: red; }
+		#ricky { background-color: black; }
+	</style>
+</head>
+<body>
+
+	<div id='lucy' class='ricardo'></div>
+	<div id='ricky' class='ricardo'></div>
+
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+	</script>
+	<script>
+		//alert('Hello World!');
+		//var age = 15;
+		//console.log('Testing?! User\'s age is ' + age);
+		//document.getElementById('lucy').style.backgroundColor = 'purple';
+		//document.getElementById('lucy').style.width = '100px';
+		//$('#lucy').css('background-color','purple');
+		//$('#lucy').css('border','3px dashed red');
+		//$('body').css('background-color','yellow');
+
+		$('#lucy').hover(function() {
+			console.log('click worked!');
+		});
+	</script>
+
+</body>
+</html>
