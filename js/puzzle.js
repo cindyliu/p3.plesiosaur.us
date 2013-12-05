@@ -48,7 +48,7 @@ $('#image-search-button').click(function() {
 
 	console.log(search_page_numbers);
 
-	$('#image-search-pages').html('<-');
+	$('#image-search-pages').html('');
 	$.each(search_page_numbers, function(key, value) {
 
 		if(value == 1) {
@@ -61,10 +61,10 @@ $('#image-search-button').click(function() {
 		$('#image-search-pages').append('<span class="' + class_to_add + '">' + value + '</span>');
 
 		if(value == 8) {
-			$('#image-search-pages').append('->');
+			$('#image-search-pages').append('');
 		}
 		else {
-			$('#image-search-pages').append('-');	
+			$('#image-search-pages').append(' | ');	
 		}
 	});
 });
@@ -82,7 +82,7 @@ function displayResults(search_term, page_num) {
 
 	console.log(start_index);
 
-	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
+	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&as_filetype=png&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
 
 	$.getJSON(search_url, function(data){
 	

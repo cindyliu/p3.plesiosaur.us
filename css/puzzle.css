@@ -10,21 +10,25 @@
 	position: relative;
 	float: left;
 	height: 600px;
+	padding: 1px;
 	overflow: hidden;
 }
 
 #image-picker-wrapper {
-	width: 295px;
+	background-color: #ccc;
+	width: 294px;
 	border: solid 2px blue;
 }
 
 #puzzle-board-wrapper {
-	width: 895px;
+	background-color: #dcb;
+	width: 894px;
 	border: solid 2px red;
 	overflow: hidden;
 }
 
 #board-canvas {
+	background-color: black;
 	width: 420px;
 	height: 420px;
 	padding: 0;
