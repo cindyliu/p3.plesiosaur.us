@@ -3,7 +3,7 @@ var search_term = null;
 
 $('#image-search-box').keyup(function() {
 
-	var max_chars = 50;
+	var max_chars = 20;
 	var num_chars = $(this).val().length;
 
 	if(num_chars == max_chars) {
@@ -31,7 +31,14 @@ $('#image-search-pages').on('click', '.unselected-page-number', function() {
 
 });
 
-$('#image-search-results').on('click', '.image-result', function() {});
+$('#image-search-results').on('click', '.image-result', function() {
+
+	var image_selected = $(this).clone();
+	image_selected.removeClass('image-result').addClass('image-selected');
+
+	$('#board-canvas').html(image_selected);
+
+});
 
 $('#image-search-button').click(function() {
 
@@ -107,3 +114,10 @@ function displayResults(search_term, page_num) {
 	    }
 	});
 }
+
+
+$('#start-button').click(function() {
+	if(($('#board-canvas').html()) != '') {
+		console.log('Puzzle started');
+	}
+});

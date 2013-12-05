@@ -24,16 +24,26 @@
 	background-color: #dcb;
 	width: 894px;
 	border: solid 2px red;
-	overflow: hidden;
 }
 
 #board-canvas {
 	background-color: black;
+	color: white;
 	width: 420px;
 	height: 420px;
 	padding: 0;
 	margin: 4em auto 0 auto;
 	border: 1px solid green;
+	overflow: hidden;
+}
+
+.image-selected {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	filter: alpha(opacity=100);
 }
 
 h1 {
@@ -59,16 +69,19 @@ h2 {
 
 .image-result {
 	float:left;
+	background-color: #ccc;
 	width: 145px;
 	height: 145px;
 	margin: 1px;
+	opacity: 1;
+	filter: alpha(opacity=100);
 }
 
 #image-search-pages {
 	position: absolute;
 	font: 100%/100% 'System' monospace;
 	color: purple;
-	bottom: 0px;
+	bottom: 10px;
 	width: 100%;
 	padding-bottom: 2em;
 }
