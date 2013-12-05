@@ -49,6 +49,10 @@ h2 {
 	border: solid 1px black;
 }
 
+#search-error {
+	color: red;
+}
+
 .image-result {
 	float:left;
 	width: 145px;
@@ -58,7 +62,8 @@ h2 {
 
 #image-search-pages {
 	position: absolute;
-	font-size: 125%;
+	font: 100%/100% 'System' monospace;
+	color: purple;
 	bottom: 0px;
 	width: 100%;
 	padding-bottom: 2em;

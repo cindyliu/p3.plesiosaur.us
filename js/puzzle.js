@@ -1,4 +1,6 @@
 
+var search_term = null;
+
 $('#image-search-box').keyup(function() {
 
 	var max_chars = 50;
@@ -13,6 +15,8 @@ $('#image-search-box').keyup(function() {
 		$('#search-warning').html('<small>Maximum ' + max_chars + ' characters.</small>');
 	}
 
+	$('#search-error').html('');
+
 });
 
 $('#image-search-pages').on('click', '.unselected-page-number', function() {
@@ -23,17 +27,62 @@ $('#image-search-pages').on('click', '.unselected-page-number', function() {
 
 	console.log($(this).text() + ' was clicked');
 
+	displayResults(search_term, parseInt($(this).text()));
+
 });
+
+$('#image-search-results').on('click', '.image-result', function() {});
 
 $('#image-search-button').click(function() {
 
+	search_term = $('#image-search-box').val().trim();
+
+	if(search_term == '') {
+		$('#search-error').html('<small>Search field cannot be blank.</small>');
+		return;
+	}
+
+	displayResults(search_term, 1);
+
+	var search_page_numbers = ['1','2','3','4','5','6','7','8'];
+
+	console.log(search_page_numbers);
+
+	$('#image-search-pages').html('<-');
+	$.each(search_page_numbers, function(key, value) {
+
+		if(value == 1) {
+			var class_to_add = 'selected-page-number';
+		}
+		else {
+			var class_to_add = 'unselected-page-number';
+		}
+
+		$('#image-search-pages').append('<span class="' + class_to_add + '">' + value + '</span>');
+
+		if(value == 8) {
+			$('#image-search-pages').append('->');
+		}
+		else {
+			$('#image-search-pages').append('-');	
+		}
+	});
+});
+
+
+function displayResults(search_term, page_num) {
+
 	$('#image-search-results').html('');
 
-	var search_term = $('#image-search-box').val();
+	//search_term = $('#image-search-box').val();
 
 	console.log(search_term);
 
-	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=medium&q=' + search_term + '&callback=?';
+	var start_index = (page_num - 1) * 4;
+
+	console.log(start_index);
+
+	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
 
 	$.getJSON(search_url, function(data){
 	
@@ -56,24 +105,5 @@ $('#image-search-button').click(function() {
 	
 	        });
 	    }
-
-	var search_page_numbers = ['1','2','3','4','5','6','7','8'];
-
-	console.log(search_page_numbers);
-
-	$('#image-search-pages').html('<-');
-	$.each(search_page_numbers, function(key, value) {
-
-		$('#image-search-pages').append('<span class="unselected-page-number"> ' + value + ' </span>');
-		if(value == 8) {
-			$('#image-search-pages').append('->');
-		}
-		else {
-			$('#image-search-pages').append('-');	
-		}
-
 	});
-
-	});
-});
-
+}
