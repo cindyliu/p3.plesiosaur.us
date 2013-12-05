@@ -1,0 +1,70 @@
+.colors, .textures {
+	width: 40px;
+	height: 40px;
+	border: 1px solid gray;
+	float: left;
+	margin: 1px;
+	cursor: pointer;
+}
+
+#red {
+	background-color: red;
+}
+
+#orange {
+	background-color: orange;
+}
+
+#yellow {
+	background-color: yellow;
+}
+
+#green {
+	background-color: green;
+}
+
+#blue {
+	background-color: blue;
+}
+
+#indigo {
+	background-color: indigo;
+}
+
+#violet {
+	background-color: violet;
+}
+
+#swirls {
+	background-image: url('/images/texture-swirls.png');
+}
+
+#paper {
+	background-image: url('/images/texture-paper.png');
+}
+
+#circles {
+	background-image: url('/images/texture-circles.png');
+}
+
+#cloth {
+	background-image: url('/images/texture-cloth.png');
+}
+
+#message-output, #recipient-output {
+	position: absolute;
+	top: 100px;
+	width: 100%;
+	font: bold 100%/100% 'Garamond' serif;
+	font-size: 40px;
+}
+
+#recipient-output {
+	top: 150px;
+}
+
+.card_sticker {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
