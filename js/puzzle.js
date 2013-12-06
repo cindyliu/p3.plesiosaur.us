@@ -59,6 +59,8 @@ function startGame() {
 
 	var game_img = $('#image-selected');
 
+	setupBoard(game_img);
+
 	game_img.fadeOut(doTiles(game_img));
 
 }
