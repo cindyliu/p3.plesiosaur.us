@@ -1,11 +1,29 @@
+/*
+ *  imgsearch.js
+ *
+ *  Javascript code to implement the image-handling functions of the game.
+ *
+ *  Functions in this file (located at the end):
+ *
+ *    doImageSearch()
+ *    displayResults(page_num)
+ *    setupBoard(game_img)
+ *
+ *  ## This script must be loaded BEFORE puzzle.js. ##
+ */
 
+// This is an attempt to clear the search input field when the page is
+// refreshed, but it doesn't work and I eventually gave up trying to fix it.
 $('#image-search-box').val('');
 
+// Listener for user keypresses in the search input text box
 $('#image-search-box').keyup(function() {
 
-	var max_chars = 20;
-	var num_chars = $(this).val().length;
+	var max_chars = 20;   // don't allow very long queries
+	var num_chars = $(this).val().length;  // length of current user input
 
+	// When user has reached the maximum number of characters, display warning message.
+	// Otherwise, display usual message informing user of max number of characters.
 	if(num_chars == max_chars) {
 		$('#search-warning').css('color', 'red');
 		$('#search-warning').html('<small>You have reached the maximum of ' + max_chars + ' characters.</small>');
@@ -15,10 +33,24 @@ $('#image-search-box').keyup(function() {
 		$('#search-warning').html('<small>Maximum ' + max_chars + ' characters.</small>');
 	}
 
+	// When a key is pressed, clear out any existing error messages
 	$('#search-error').html('');
 
 });
 
+// Listener for user clicking the "Search" button.
+$('#image-search-button').click(function() {
+	doImageSearch();
+});
+// Listener for user pressing "Enter" while in input field.
+// Mimics form submit behavior/clicking the "Search" button.
+$('#image-search-box').keypress(function(event) {
+	if(event.which == 13) {
+		doImageSearch();
+	}
+});
+
+// Listener for user selecting a new "page" of search results
 $('#image-search-pages').on('click', '.unselected-page-number', function() {
 
 	$('#image-search-pages').children().removeClass('selected-page-number').addClass('unselected-page-number');
@@ -47,14 +79,7 @@ $('#image-search-results').on('click', '.image-result', function() {
 
 });
 
-$('#image-search-button').click(function() {
-	doImageSearch();
-});
-$('#image-search-box').keypress(function(event) {
-	if(event.which == 13) {
-		doImageSearch();
-	}
-});
+
 
 function doImageSearch() {
 
