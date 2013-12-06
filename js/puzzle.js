@@ -1,123 +1,61 @@
+var CANVAS_SIZE = 420; // this size was chosen because 420 is the lowest common multiple of 3, 4, 5, 6, and 7
 
-var search_term = null;
+var board_size = 5; // 5x5 board; hoping to eventually have option to pick board size of 3x3, 4x4, 5x5, 6x6, or 7x7
 
-$('#image-search-box').keyup(function() {
-
-	var max_chars = 20;
-	var num_chars = $(this).val().length;
-
-	if(num_chars == max_chars) {
-		$('#search-warning').css('color', 'red');
-		$('#search-warning').html('<small>You have reached the maximum of ' + max_chars + ' characters.</small>');
-	}
-	else {
-		$('#search-warning').css('color', 'black');
-		$('#search-warning').html('<small>Maximum ' + max_chars + ' characters.</small>');
-	}
-
-	$('#search-error').html('');
-
-});
-
-$('#image-search-pages').on('click', '.unselected-page-number', function() {
-
-	$('#image-search-pages').children().removeClass('selected-page-number').addClass('unselected-page-number');
-
-	$(this).removeClass('unselected-page-number').addClass('selected-page-number');
-
-	console.log($(this).text() + ' was clicked');
-
-	displayResults(search_term, parseInt($(this).text()));
-
-});
-
-$('#image-search-results').on('click', '.image-result', function() {
-
-	var image_selected = $(this).clone();
-	image_selected.removeClass('image-result').addClass('image-selected');
-
-	$('#board-canvas').html(image_selected);
-
-});
-
-$('#image-search-button').click(function() {
-
-	search_term = $('#image-search-box').val().trim();
-
-	if(search_term == '') {
-		$('#search-error').html('<small>Search field cannot be blank.</small>');
-		return;
-	}
-
-	displayResults(search_term, 1);
-
-	var search_page_numbers = ['1','2','3','4','5','6','7','8'];
-
-	console.log(search_page_numbers);
-
-	$('#image-search-pages').html('');
-	$.each(search_page_numbers, function(key, value) {
-
-		if(value == 1) {
-			var class_to_add = 'selected-page-number';
-		}
-		else {
-			var class_to_add = 'unselected-page-number';
-		}
-
-		$('#image-search-pages').append('<span class="' + class_to_add + '">' + value + '</span>');
-
-		if(value == 8) {
-			$('#image-search-pages').append('');
-		}
-		else {
-			$('#image-search-pages').append(' | ');	
-		}
-	});
-});
-
-
-function displayResults(search_term, page_num) {
-
-	$('#image-search-results').html('');
-
-	//search_term = $('#image-search-box').val();
-
-	console.log(search_term);
-
-	var start_index = (page_num - 1) * 4;
-
-	console.log(start_index);
-
-	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&as_filetype=png&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
-
-	$.getJSON(search_url, function(data){
+$('#game-controls').on('click', '#start-button', function() {
 	
-		// This line will basically parse the data we get back from Google into a nice array we can work with
-	    var images = data.responseData.results;
-	
-		// Only attempt to do the following if we had images...I.e there was more than 0 images
-	    if(images.length > 0){
-			
-			// .each() is a jQuery method that lets us loop through a set of data. 
-			// So here our data set is images
-			// Essentially we're unpacking our images we got back from Google
-	        $.each(images, function(key, image) {
-	        
-	        	// Create a new image element
-	        	var new_image_element = "<img class='image-result' src='" + image.url + "'>";
-	        	
-	        	// Now put the new image in our results div
-	            $('#image-search-results').prepend(new_image_element);
-	
-	        });
-	    }
-	});
-}
-
-
-$('#start-button').click(function() {
 	if(($('#board-canvas').html()) != '') {
+		game_on = true;
+	
+		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
+								+'<input type="button" id="reset-button" value="Reset puzzle">');
+	
 		console.log('Puzzle started');
 	}
+
 });
+
+$('#game-controls').on('click', '#quit-button', function() {
+	console.log('clicked stop button');
+	if(!game_on) {
+		alert('Error: Please reload the page to start over. (clicked quit when game off)');
+	}
+
+	game_on = false;
+
+	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
+
+	console.log('Puzzle stopped');
+
+});
+
+$('#game-controls').on('click', '#reset-button', function () {
+	console.log('reset button was clicked');
+});
+
+
+/* Divides the image on the board into x identical square pieces,
+ *   where x = board_size * board_size;
+ */
+function makeBoardGrid() {
+	var tile_num = 0;
+
+	var piece_size = CANVAS_SIZE / board_size;
+
+	console.log('Piece size = ' + piece_size);
+
+	for(var i = 0; i < board_size; i++) {
+		for(var j = 0; j < board_size; j++) {
+			var piece = new Image();
+			piece.attr('id', 'grid-' + tile_num);
+			piece.droppable( { accept: 'tile-' + tile_num } );
+			tile_num++;
+		}
+	}
+
+	if(tile_num != (board_size * board_size)) {
+		alert('Error: Please reload the page to start over. (final tile_num != board_size^2)')
+	}
+
+}
+
