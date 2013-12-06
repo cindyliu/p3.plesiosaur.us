@@ -1,5 +1,7 @@
 var SEARCH_PAGE_NUMBERS = ['1','2','3','4','5','6','7','8'];
 var CANVAS_SIZE = 420; // this size was chosen because 420 is the lowest common multiple of 3, 4, 5, 6, and 7
+var IE_BGSIZE_HEAD = 'progidDXImageTransform.Microsoft.AlphaImageLoader(src=\''
+var IE_BGSIZE_TAIL = '\', sizingMethod=\'scale\');'
 
 var search_term = null;
 
