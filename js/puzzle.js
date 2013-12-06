@@ -39,13 +39,14 @@ $('#game-controls').on('click', '#reset-button', function () {
 	$('#message').html('Puzzle reset!');
 });
 
-
-$('.grid').on('drop', function(ui) {
+/*
+$('.grid').on('drop', function(event, ui) {
 	var grid_num = parseInt($(this).attr('id').slice(1));
 	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
 	if(grid_num == tile_num) {
 		ui.draggable.draggable('option', 'disabled', true);
 		ui.draggable.css('border', '');
+		$(this).droppable('option', 'disabled', true);
 		tiles_done++;
 	}
 
@@ -53,6 +54,24 @@ $('.grid').on('drop', function(ui) {
 		doPuzzleSolved();
 	}
 });
+*/
+$('.grid').droppable({ drop: function(event, ui) {
+console.log('grid.droppable-accept was triggered');
+/*
+	var grid_num = parseInt($(this).attr('id').slice(1));
+	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
+	if(grid_num == tile_num) {
+		ui.draggable.draggable('option', 'disabled', true);
+		ui.draggable.css('border', '');
+		$(this).droppable('option', 'disabled', true);
+		tiles_done++;
+	}
+
+	if(tiles_done == (board_size * board_size)) {
+		doPuzzleSolved();
+	}
+*/
+} });
 
 
 /* Divides the image on the board into x identical square pieces,

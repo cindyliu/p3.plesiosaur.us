@@ -108,6 +108,7 @@ h2 {
 	background-repeat: no-repeat;
 	background-attachment: absolute;
 	background-position: top left;
+	background-size: 420px 420px;
 	position: absolute;
 	border: solid 1px blue;
 	overflow: hidden;
