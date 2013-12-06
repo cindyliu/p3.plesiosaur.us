@@ -46,6 +46,15 @@ $('#image-search-results').on('click', '.image-result', function() {
 });
 
 $('#image-search-button').click(function() {
+	doImageSearch();
+});
+$('#image-search-box').keypress(function(event) {
+	if(event.which == 13) {
+		doImageSearch();
+	}
+});
+
+function doImageSearch() {
 
 	search_term = $.trim($('#image-search-box').val());
 
@@ -75,7 +84,8 @@ $('#image-search-button').click(function() {
 			$('#image-search-pages').append(' | ');	
 		}
 	});
-});
+
+}
 
 
 function displayResults(page_num) {
