@@ -109,6 +109,7 @@ h2 {
 	background-attachment: absolute;
 	background-position: top left;
 	background-size: 420px 420px;
+	-webkit-background-size: 420px 420px;
 	position: absolute;
 	border: solid 1px blue;
 	overflow: hidden;

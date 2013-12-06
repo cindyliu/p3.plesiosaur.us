@@ -110,9 +110,7 @@ function doTiles(bg) {
 			$('#t' + tile_num).css({ top: y + 'px', left: x + 'px'});
 			bgx = -1 * (col * piece_size);
 			bgy = -1 * (row * piece_size);
-			$('#t' + tile_num).css('background-position', bgx + 'px ' + bgy + 'px');
-			$('#t' + tile_num).css('background-image', bg_url);
-			$('#t' + tile_num).css('filter', IE_BGSIZE_HEAD + bg_url + IE_BGSIZE_TAIL);
+			doTileImage($('#t' + tile_num), bg_url, bgx, bgy);
 			$('#t' + tile_num).fadeIn();
 			tile_num++;
 		}
@@ -128,6 +126,12 @@ function doTiles(bg) {
 }
 
 
+function doTileImage(tile, bg_img_url, bg_x_pos, bg_y_pos) {
+	tile.css('background-position', bg_x_pos + 'px ' + bg_y_pos + 'px');
+	tile.css('background-image', bg_img_url);
+	tile.css('filter', IE_BGSIZE_HEAD + bg_img_url + IE_BGSIZE_TAIL);
+	tile.css('-ms-filter', '\'' + IE_BGSIZE_HEAD + bg_img_url + IE_BGSIZE_TAIL + '\'');
+}
 
 function doPuzzleSolved() {
 	$('#message').html('Congratulations, you solved the puzzle!');
