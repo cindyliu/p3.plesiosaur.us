@@ -82,6 +82,7 @@ h2 {
 	width: 145px;
 	height: 145px;
 	margin: 1px;
+	cursor: pointer;
 }
 
 #image-search-pages {

@@ -57,7 +57,7 @@ $('#image-search-pages').on('click', '.unselected-page-number', function() {
 
 	$(this).removeClass('unselected-page-number').addClass('selected-page-number');
 
-	console.log('Page menu: ' + $(this).text() + ' was clicked');
+//	console.log('Page menu: ' + $(this).text() + ' was clicked');
 
 	displayResults(parseInt($(this).text()));
 
@@ -70,11 +70,6 @@ $('#image-search-results').on('click', '.image-result', function() {
 		image_selected.attr('id', 'image-selected');
 
 		setupBoard(image_selected);
-
-//		$('#board-canvas').prepend('<div id=\'image-wrapper\'>');
-//		$('#board-canvas').append('</div>');
-
-		console.log($('#image-selected').position());
 	}
 
 });
@@ -117,7 +112,7 @@ function doImageSearch() {
 
 function displayResults(page_num) {
 
-	$('#image-search-results').html('');
+	$('#image-search-results').html('<small>Click on an image below to get started:</small><br>');
 
 //	console.log('Displaying results for: ' + search_term);
 

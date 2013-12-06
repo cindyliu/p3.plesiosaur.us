@@ -1,15 +1,15 @@
 
 $('#game-controls').on('click', '#start-button', function() {
-console.log('start button clicked');
+//console.log('start button clicked');
 	if(($('#board-canvas').html()) != '') {
 		game_on = true;
-console.log('game is on');
+//console.log('game is on');
 		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
 								+'<input type="button" id="reset-button" value="Reset puzzle">');
-console.log('game buttons changed');
+//console.log('game buttons changed');
 		startGame();
 
-		console.log('Puzzle started');
+//		console.log('Puzzle started');
 	}
 	else {
 		$('#message').css('color', 'red');
@@ -19,7 +19,7 @@ console.log('game buttons changed');
 });
 
 $('#game-controls').on('click', '#quit-button', function() {
-	console.log('clicked stop button');
+//	console.log('clicked stop button');
 	if(!game_on) {
 		alert('Error: Please reload the page to start over. (clicked quit when game off)');
 	}
@@ -39,27 +39,14 @@ $('#game-controls').on('click', '#reset-button', function () {
 	$('#message').html('Puzzle reset!');
 });
 
-/*
-$('.grid').on('drop', function(event, ui) {
-	var grid_num = parseInt($(this).attr('id').slice(1));
-	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
-	if(grid_num == tile_num) {
-		ui.draggable.draggable('option', 'disabled', true);
-		ui.draggable.css('border', '');
-		$(this).droppable('option', 'disabled', true);
-		tiles_done++;
-	}
 
-	if(tiles_done == (board_size * board_size)) {
-		doPuzzleSolved();
-	}
-});
-*/
+
 $('.grid').droppable({ drop: function(event, ui) {
 console.log('grid.droppable-accept was triggered');
 /*
 	var grid_num = parseInt($(this).attr('id').slice(1));
 	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
+console.log(grid_num, tile_num);
 	if(grid_num == tile_num) {
 		ui.draggable.draggable('option', 'disabled', true);
 		ui.draggable.css('border', '');
@@ -73,16 +60,36 @@ console.log('grid.droppable-accept was triggered');
 */
 } });
 
+/*
+$('.grid').on('drop', function() {
+console.log('grid.droppable-accept was triggered');
+
+	var grid_num = parseInt($(this).attr('id').slice(1));
+	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
+	if(grid_num == tile_num) {
+		ui.draggable.draggable('option', 'disabled', true);
+		ui.draggable.css('border', '');
+		$(this).droppable('option', 'disabled', true);
+		tiles_done++;
+	}
+
+	if(tiles_done == (board_size * board_size)) {
+		doPuzzleSolved();
+	}
+
+});
+*/
+
 
 /* Divides the image on the board into x identical square pieces,
  *   where x = board_size * board_size;
  */
 function startGame() {
-console.log('inside startGame()');
+//console.log('inside startGame()');
 	var game_img = $('#image-selected');
-console.log('got game_img');
+//console.log('got game_img');
 	game_img.fadeOut(doTiles(game_img));
-console.log('tiles done');
+//console.log('tiles done');
 }
 
 function doTiles(bg) {
@@ -94,7 +101,7 @@ function doTiles(bg) {
 	var tile_num = 0;
 	var x, y, bgx, bgy;
 	
-	console.log('Piece size = ' + piece_size);
+//	console.log('Piece size = ' + piece_size);
 
 	for(var row = 0; row < board_size; row++) {
 		for(var col = 0; col < board_size; col++) {
@@ -119,7 +126,7 @@ function doTiles(bg) {
 		alert('Error: Please reload the page to start over. (final tile_num != board_size^2)')
 	}
 
-	$('.grid').droppable({ accept: '.tile',  });
+	$('.grid').droppable({ accept: '.tile', tolerance: 'pointer' });
 	$('.tile').draggable({ containment: '#puzzle-board-wrapper', cursor: 'crosshair', snap: '.grid', snapMode: 'inner' });
 
 }
@@ -130,8 +137,8 @@ function doTileImage(tile, bg_src, bg_x_pos, bg_y_pos) {
 
 	tile.css('background-position', bg_x_pos + 'px ' + bg_y_pos + 'px');
 	tile.css('background-image', bg_url);
-	tile.css('filter', IE_BGSIZE_HEAD + bg_src + IE_BGSIZE_TAIL);
-	tile.css('-ms-filter', '\'' + IE_BGSIZE_HEAD + bg_src + IE_BGSIZE_TAIL + '\'');
+//	tile.css('filter', IE_BGSIZE_HEAD + bg_src + IE_BGSIZE_TAIL);
+//	tile.css('-ms-filter', '\'' + IE_BGSIZE_HEAD + bg_src + IE_BGSIZE_TAIL + '\'');
 }
 
 function doPuzzleSolved() {
