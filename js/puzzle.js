@@ -91,7 +91,6 @@ function doTiles(bg) {
 	var right_border = ((($('#puzzle-board-wrapper').width()) - ($('#board-canvas').width()))/2) - piece_size;
 	var bottom_border = $('#puzzle-board-wrapper').height() - piece_size - 100;
 	var right_side_offset = right_border + piece_size + CANVAS_SIZE;
-	var bg_url = 'url(\'' + bg.attr('src') + '\')';
 	var tile_num = 0;
 	var x, y, bgx, bgy;
 	
@@ -110,7 +109,7 @@ function doTiles(bg) {
 			$('#t' + tile_num).css({ top: y + 'px', left: x + 'px'});
 			bgx = -1 * (col * piece_size);
 			bgy = -1 * (row * piece_size);
-			doTileImage($('#t' + tile_num), bg_url, bgx, bgy);
+			doTileImage($('#t' + tile_num), bg.attr('src'), bgx, bgy);
 			$('#t' + tile_num).fadeIn();
 			tile_num++;
 		}
@@ -126,11 +125,13 @@ function doTiles(bg) {
 }
 
 
-function doTileImage(tile, bg_img_url, bg_x_pos, bg_y_pos) {
+function doTileImage(tile, bg_src, bg_x_pos, bg_y_pos) {
+	var bg_url = 'url(\'' + bg_src + '\')';
+
 	tile.css('background-position', bg_x_pos + 'px ' + bg_y_pos + 'px');
-	tile.css('background-image', bg_img_url);
-	tile.css('filter', IE_BGSIZE_HEAD + bg_img_url + IE_BGSIZE_TAIL);
-	tile.css('-ms-filter', '\'' + IE_BGSIZE_HEAD + bg_img_url + IE_BGSIZE_TAIL + '\'');
+	tile.css('background-image', bg_url);
+	tile.css('filter', IE_BGSIZE_HEAD + bg_src + IE_BGSIZE_TAIL);
+	tile.css('-ms-filter', '\'' + IE_BGSIZE_HEAD + bg_src + IE_BGSIZE_TAIL + '\'');
 }
 
 function doPuzzleSolved() {
