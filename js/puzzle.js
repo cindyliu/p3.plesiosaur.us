@@ -26,7 +26,7 @@ $('#game-controls').on('click', '#quit-button', function() {
 
 	game_on = false;
 
-	setupBoard(game_img);
+	setupBoard($('#image-selected'));
 	
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
 
