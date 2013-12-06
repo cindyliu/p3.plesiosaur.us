@@ -91,7 +91,7 @@ function doTiles(bg) {
 	var right_border = ((($('#puzzle-board-wrapper').width()) - ($('#board-canvas').width()))/2) - piece_size;
 	var bottom_border = $('#puzzle-board-wrapper').height() - piece_size - 100;
 	var right_side_offset = right_border + piece_size + CANVAS_SIZE;
-	var bg_url = 'url(' + bg.attr('src') + ')';
+	var bg_url = 'url(\'' + bg.attr('src') + '\')';
 	var tile_num = 0;
 	var x, y, bgx, bgy;
 	
