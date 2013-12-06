@@ -9,6 +9,7 @@
 -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="js/globalvars.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
 					<small>Maximum 20 characters.</small>
 				</div>
 				<br>
-				<small>Examples: kittens, Nathan Fillion, greed</small>
+				<small>Examples: kittens, Nathan Fillion, cuddly</small>
 				<br><br><br><br>
 			</div>
 			<div id="image-search-results"></div>
@@ -36,11 +37,15 @@
 		</div>
 		<div id="puzzle-board-wrapper">
 			<h2>Play the game</h2>
+			<div id='success-message'></div>
 			<div id="board-canvas"></div>
-			<input type="button" id="start-button" value="Start puzzle!">
+			<div id='game-controls'>
+				<input type="button" id="start-button" value="Start puzzle!">
+			</div>
 		</div>
 	</div>
 
+	<script src="js/imgsearch.js"></script>
 	<script src="js/puzzle.js"></script>
 
 </body>
