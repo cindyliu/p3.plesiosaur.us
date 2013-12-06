@@ -1,14 +1,14 @@
 
 $('#game-controls').on('click', '#start-button', function() {
-	
+console.log('start button clicked');
 	if(($('#board-canvas').html()) != '') {
 		game_on = true;
-	
+console.log('game is on');
 		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
 								+'<input type="button" id="reset-button" value="Reset puzzle">');
-
+console.log('game buttons changed');
 		startGame();
-	
+
 		console.log('Puzzle started');
 	}
 	else {
@@ -26,7 +26,8 @@ $('#game-controls').on('click', '#quit-button', function() {
 
 	game_on = false;
 
-	setupBoard($('#image-selected'));
+	var game_img = $('#image-selected');
+	game_img.fadeIn(setupBoard(game_img));
 	
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
 
@@ -58,11 +59,11 @@ $('.grid').on('drop', function(ui) {
  *   where x = board_size * board_size;
  */
 function startGame() {
-
+console.log('inside startGame()');
 	var game_img = $('#image-selected');
-
+console.log('got game_img');
 	game_img.fadeOut(doTiles(game_img));
-
+console.log('tiles done');
 }
 
 function doTiles(bg) {
@@ -82,7 +83,7 @@ function doTiles(bg) {
 			var grid = '<div class=\'grid\' id=\'g' + tile_num + '\'></div>';
 			$('#board-canvas').append(grid)
 			$('.grid').css({ 'height': piece_size, 'width': piece_size });
-			var tile = '<div class=\'tile\' id=\'t' + tile_num + '\'></div>';
+			var tile = '<div class=\'tile\' id=\'t' + tile_num + '\' hidden></div>';
 			$('#puzzle-board-wrapper').append(tile);
 			$('#t' + tile_num).css({ 'height': piece_size, 'width': piece_size });
 			x = Math.floor(Math.random() * right_border) + (Math.round(Math.random()) * right_side_offset);
@@ -92,6 +93,7 @@ function doTiles(bg) {
 			bgy = -1 * (row * piece_size);
 			$('#t' + tile_num).css('background-position', bgx + 'px ' + bgy + 'px');
 			$('#t' + tile_num).css('background-image', bg_url);
+			$('#t' + tile_num).fadeIn();
 			tile_num++;
 		}
 	}

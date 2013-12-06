@@ -121,7 +121,9 @@ function displayResults(page_num) {
 
 function setupBoard(game_img) {
 
-	$('.tile').remove();
+	$('.tile').fadeOut(function() {
+		$(this).remove();
+	});
 	$('.grid').remove();
 	$('#message').html('');
 
