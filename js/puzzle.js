@@ -112,7 +112,7 @@ function doTiles(bg) {
 			bgy = -1 * (row * piece_size);
 			$('#t' + tile_num).css('background-position', bgx + 'px ' + bgy + 'px');
 			$('#t' + tile_num).css('background-image', bg_url);
-			$('#t' + tile_num).css('filter', IE_BGSIZE_HEAD + br_url + IE_BGSIZE_TAIL);
+			$('#t' + tile_num).css('filter', IE_BGSIZE_HEAD + bg_url + IE_BGSIZE_TAIL);
 			$('#t' + tile_num).fadeIn();
 			tile_num++;
 		}
