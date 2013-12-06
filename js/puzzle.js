@@ -68,23 +68,29 @@ function doTiles(bg) {
 
 	var piece_size = CANVAS_SIZE / board_size;
 	var right_border = ((($('#puzzle-board-wrapper').width()) - ($('#board-canvas').width()))/2) - piece_size;
-	var bottom_border = $('#puzzle-board-wrapper').height();
-	var bg_url = 'url(';
+	var bottom_border = $('#puzzle-board-wrapper').height() - piece_size - 100;
+	var right_side_offset = right_border + piece_size + CANVAS_SIZE;
+	var bg_url = 'url(' + bg.attr('src') + ')';
+	var tile_num = 0;
 	var x, y, bgx, bgy;
 	
 	console.log('Piece size = ' + piece_size);
 
-	for(var i = 0; i < board_size; i++) {
-		for(var j = 0; j < board_size; j++) {
-			var grid = '<div class=\'grid\' id=g\'' + tile_num + '\'></div>';
+	for(var row = 0; row < board_size; row++) {
+		for(var col = 0; col < board_size; col++) {
+			var grid = '<div class=\'grid\' id=\'g' + tile_num + '\'></div>';
 			$('#board-canvas').append(grid)
 			$('.grid').css({ 'height': piece_size, 'width': piece_size });
-			var tile = '<div class=\'tile\' id=t\'' + tile_num + '\'></div>';
+			var tile = '<div class=\'tile\' id=\'t' + tile_num + '\'></div>';
 			$('#puzzle-board-wrapper').append(tile);
-			x = Math.floor(Math.random() * right_border) + Math.round(Math.random());
+			$('#t' + tile_num).css({ 'height': piece_size, 'width': piece_size });
+			x = Math.floor(Math.random() * right_border) + (Math.round(Math.random()) * right_side_offset);
 			y = Math.floor(Math.random() * bottom_border) + 100;
 			$('#t' + tile_num).css({ top: y + 'px', left: x + 'px'});
-
+			bgx = -1 * (col * piece_size);
+			bgy = -1 * (row * piece_size);
+			$('#t' + tile_num).css('background-position', bgx + 'px ' + bgy + 'px');
+			$('#t' + tile_num).css('background-image', bg_url);
 			tile_num++;
 		}
 	}
@@ -93,11 +99,11 @@ function doTiles(bg) {
 		alert('Error: Please reload the page to start over. (final tile_num != board_size^2)')
 	}
 
+	$('.grid').droppable({ accept: '.tile',  });
+	$('.tile').draggable({ containment: '#puzzle-board-wrapper', cursor: 'crosshair', snap: '.grid', snapMode: 'inner' });
+
 }
 
-
-			grid.droppable({ accept: '.tile',  });
-			tile.draggable({ containment: '#puzzle-board-wrapper', cursor: 'crosshair', snap: '.grid', snapMode: 'inner' });
 
 
 function doPuzzleSolved() {

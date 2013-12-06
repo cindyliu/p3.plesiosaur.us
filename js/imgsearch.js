@@ -1,6 +1,3 @@
-console.log($('#puzzle-board-wrapper').height());
-
-
 
 $('#image-search-box').keyup(function() {
 
@@ -37,6 +34,10 @@ $('#image-search-results').on('click', '.image-result', function() {
 	if(!game_on) {
 		var image_selected = $(this).clone();
 		image_selected.attr('id', 'image-selected');
+
+		$('.tile').remove();
+		$('.grid').remove();
+		$('#message').html('');
 
 		$('#board-canvas').html(image_selected);
 //		$('#board-canvas').prepend('<div id=\'image-wrapper\'>');
