@@ -1,4 +1,6 @@
 
+$('#image-search-box').val('');
+
 $('#image-search-box').keyup(function() {
 
 	var max_chars = 20;
