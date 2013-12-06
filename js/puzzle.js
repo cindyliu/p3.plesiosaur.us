@@ -58,7 +58,6 @@ $('.grid').on('drop', function(ui) {
 function startGame() {
 
 	var game_img = $('#image-selected');
-	var tile_num = 0;
 
 	game_img.fadeOut(doTiles(game_img));
 

@@ -35,11 +35,8 @@ $('#image-search-results').on('click', '.image-result', function() {
 		var image_selected = $(this).clone();
 		image_selected.attr('id', 'image-selected');
 
-		$('.tile').remove();
-		$('.grid').remove();
-		$('#message').html('');
+		setupBoard(image_selected);
 
-		$('#board-canvas').html(image_selected);
 //		$('#board-canvas').prepend('<div id=\'image-wrapper\'>');
 //		$('#board-canvas').append('</div>');
 
@@ -119,4 +116,15 @@ function displayResults(page_num) {
 	        });
 	    }
 	});
+}
+
+
+function setupBoard(game_img) {
+
+	$('.tile').remove();
+	$('.grid').remove();
+	$('#message').html('');
+
+	$('#board-canvas').html(game_img);
+
 }
