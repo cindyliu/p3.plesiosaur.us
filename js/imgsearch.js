@@ -50,7 +50,7 @@ $('#image-search-results').on('click', '.image-result', function() {
 
 $('#image-search-button').click(function() {
 
-	search_term = $('#image-search-box').val().trim();
+	search_term = $.trim($('#image-search-box').val());
 
 	if(search_term == '') {
 		$('#search-error').html('<small>Search field cannot be blank.</small>');
