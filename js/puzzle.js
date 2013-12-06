@@ -26,6 +26,8 @@ $('#game-controls').on('click', '#quit-button', function() {
 
 	game_on = false;
 
+	setupBoard(game_img);
+	
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
 
 	$('#message').html('Game over!');
@@ -58,8 +60,6 @@ $('.grid').on('drop', function(ui) {
 function startGame() {
 
 	var game_img = $('#image-selected');
-
-	setupBoard(game_img);
 
 	game_img.fadeOut(doTiles(game_img));
 
