@@ -21,6 +21,7 @@
 }
 
 #puzzle-board-wrapper {
+	position: relative;
 	background-color: #dcb;
 	width: 1094px;
 /*	border: solid 2px red; */
@@ -28,6 +29,7 @@
 }
 
 #board-canvas {
+	position: relative;
 	background-color: black;
 	color: white;
 	width: 420px;
@@ -39,8 +41,11 @@
 }
 
 #image-selected {
-	width: 100%;
-	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 420px;
+	height: 420px;
 	padding: 0;
 	margin: 0;
 }
@@ -60,6 +65,12 @@ h2 {
 	color: maroon;
 	margin: 0;
 /*	border: solid 1px black; */
+}
+
+#message {
+	position: absolute;
+	top: 55px;
+	width: 100%;
 }
 
 #search-error {
@@ -92,6 +103,19 @@ h2 {
 	font-weight: bold;
 }
 
+.tile {
+	background-image: inherit;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: top left;
+	position: absolute;
+	border: solid 1px blue;
+}
+
+.grid {
+	float: left;
+	border: solid 1px green;
+}
 
 
 /*-------------------------------------------------------------------------------------------------

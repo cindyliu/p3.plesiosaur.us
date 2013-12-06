@@ -1,6 +1,3 @@
-var CANVAS_SIZE = 420; // this size was chosen because 420 is the lowest common multiple of 3, 4, 5, 6, and 7
-
-var board_size = 5; // 5x5 board; hoping to eventually have option to pick board size of 3x3, 4x4, 5x5, 6x6, or 7x7
 
 $('#game-controls').on('click', '#start-button', function() {
 	
@@ -9,8 +6,14 @@ $('#game-controls').on('click', '#start-button', function() {
 	
 		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
 								+'<input type="button" id="reset-button" value="Reset puzzle">');
+
+		startGame();
 	
 		console.log('Puzzle started');
+	}
+	else {
+		$('#message').css('color', 'red');
+		$('#message').html('You must pick an image before you can start the puzzle!');
 	}
 
 });
@@ -25,30 +28,63 @@ $('#game-controls').on('click', '#quit-button', function() {
 
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
 
-	console.log('Puzzle stopped');
+	$('#message').html('Game over!');
 
 });
 
 $('#game-controls').on('click', '#reset-button', function () {
-	console.log('reset button was clicked');
+	$('#message').html('Puzzle reset!');
+});
+
+
+$('.grid').on('drop', function(ui) {
+	var grid_num = parseInt($(this).attr('id').slice(1));
+	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
+	if(grid_num == tile_num) {
+		ui.draggable.draggable('option', 'disabled', true);
+		ui.draggable.css('border', '');
+		tiles_done++;
+	}
+
+	if(tiles_done == (board_size * board_size)) {
+		doPuzzleSolved();
+	}
 });
 
 
 /* Divides the image on the board into x identical square pieces,
  *   where x = board_size * board_size;
  */
-function makeBoardGrid() {
+function startGame() {
+
+	var game_img = $('#image-selected');
 	var tile_num = 0;
 
-	var piece_size = CANVAS_SIZE / board_size;
+	game_img.fadeOut(doTiles(game_img));
 
+}
+
+function doTiles(bg) {
+
+	var piece_size = CANVAS_SIZE / board_size;
+	var right_border = ((($('#puzzle-board-wrapper').width()) - ($('#board-canvas').width()))/2) - piece_size;
+	var bottom_border = $('#puzzle-board-wrapper').height();
+	var bg_url = 'url(';
+	var x, y, bgx, bgy;
+	
 	console.log('Piece size = ' + piece_size);
 
 	for(var i = 0; i < board_size; i++) {
 		for(var j = 0; j < board_size; j++) {
-			var piece = new Image();
-			piece.attr('id', 'grid-' + tile_num);
-			piece.droppable( { accept: 'tile-' + tile_num } );
+			var grid = '<div class=\'grid\' id=g\'' + tile_num + '\'></div>';
+			$('#board-canvas').append(grid)
+			$('.grid').css({ 'height': piece_size, 'width': piece_size });
+			var tile = '<div class=\'tile\' id=t\'' + tile_num + '\'></div>';
+			$('#puzzle-board-wrapper').append(tile);
+			x = Math.floor(Math.random() * right_border) + Math.round(Math.random());
+			y = Math.floor(Math.random() * bottom_border) + 100;
+			$('#t' + tile_num).css({ top: y + 'px', left: x + 'px'});
+
 			tile_num++;
 		}
 	}
@@ -59,3 +95,11 @@ function makeBoardGrid() {
 
 }
 
+
+			grid.droppable({ accept: '.tile',  });
+			tile.draggable({ containment: '#puzzle-board-wrapper', cursor: 'crosshair', snap: '.grid', snapMode: 'inner' });
+
+
+function doPuzzleSolved() {
+	$('#message').html('Congratulations, you solved the puzzle!');
+}

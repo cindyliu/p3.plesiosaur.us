@@ -1,6 +1,6 @@
-var SEARCH_PAGE_NUMBERS = ['1','2','3','4','5','6','7','8'];
+console.log($('#puzzle-board-wrapper').height());
 
-var search_term = null;
+
 
 $('#image-search-box').keyup(function() {
 
@@ -39,6 +39,10 @@ $('#image-search-results').on('click', '.image-result', function() {
 		image_selected.attr('id', 'image-selected');
 
 		$('#board-canvas').html(image_selected);
+//		$('#board-canvas').prepend('<div id=\'image-wrapper\'>');
+//		$('#board-canvas').append('</div>');
+
+		console.log($('#image-selected').position());
 	}
 
 });
@@ -105,7 +109,7 @@ function displayResults(page_num) {
 	        	var new_image_element = "<img class='image-result' src='" + image.url + "'>";
 	        	
 	        	// Now put the new image in our results div
-	            $('#image-search-results').prepend(new_image_element);
+	            $('#image-search-results').append(new_image_element);
 
 	            $('img').error(function() {
 	            	$(this).hide();
