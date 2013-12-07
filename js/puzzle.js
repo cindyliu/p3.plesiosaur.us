@@ -162,6 +162,7 @@ function doTiles(bg) {
 				ui.draggable.draggable('widget').offset($(this).droppable('widget').offset());
 				ui.draggable.draggable('option', 'disabled', true);
 				ui.draggable.draggable('widget').css('border', 'none');
+				ui.draggable.draggable('widget').css('z-index', '0');
 				$(this).droppable('option', 'disabled', true);
 
 				// And keep track of the player's progress!
