@@ -1,25 +1,19 @@
 
-// 5x5 board; hoping to eventually have option to pick
-// board size of 3x3, 4x4, 5x5, 6x6, or 7x7
+
 var board_size = 3;
 
 
 $('#game-controls').on('click', '#start-button', function() {
-//console.log('start button clicked');
+
 	if(($('#board-canvas').html()) != '') {
 		game_on = true;
-//console.log('game is on');
+
 		$('#difficulty').hide();
-		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
-								/*+'<input type="button" id="reset-button" value="Reset puzzle">'*/);
-//console.log('game buttons changed');
+		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">');
 		$('#message').html('');
 
 		board_size = $('#difficulty').children().val();
-//		board_size = $('#difficulty').options[$('#difficulty').selectedIndex].value;
 		startGame();
-
-//		console.log('Puzzle started');
 	}
 	else {
 		$('#message').css('color', '#f36');
@@ -29,7 +23,7 @@ $('#game-controls').on('click', '#start-button', function() {
 });
 
 $('#game-controls').on('click', '#quit-button', function() {
-//	console.log('clicked stop button');
+
 	if(!game_on) {
 		alert('Error: Please reload the page to start over. (clicked quit when game off)');
 	}
@@ -67,8 +61,6 @@ function doTiles(bg) {
 	var tile_num = 0;
 	var x, y, bgx, bgy;
 	tiles_done = 0;
-	
-//	console.log('Piece size = ' + piece_size);
 
 	for(var row = 0; row < board_size; row++) {
 		for(var col = 0; col < board_size; col++) {
@@ -139,5 +131,5 @@ function doPuzzleSolved() {
 	$('#game-controls').html('<input type="button" id="start-button" value="Play again!">');
 	$('#message').html('<span id="success">' + SUCCESS_MESSAGE + '</span>');
 	game_on = false;
-	alert(SUCCESS_MESSAGE);
+//	alert(SUCCESS_MESSAGE);
 }

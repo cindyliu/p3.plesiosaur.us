@@ -25,7 +25,6 @@ body {
 #image-picker-wrapper {
 	background-color: #ffc;
 	width: 298px;
-/*	border: solid 2px blue; */
 }
 
 #puzzle-board-wrapper {
@@ -43,8 +42,7 @@ body {
 	height: 420px;
 	padding: 0;
 	margin: 5em auto 0 auto;
-/*	border: 1px solid green;
-	overflow: hidden; */
+	overflow: hidden;
 }
 
 #image-selected {
@@ -96,7 +94,6 @@ h2 {
 	padding-top: 1em;
 	color: #555;
 	margin: 0;
-/*	border: solid 1px black; */
 }
 
 #puzzle-board-wrapper h2 {
@@ -125,8 +122,8 @@ h2 {
 	display: block;
 	position: relative;
 	float: left;
-	font-weight: bold;
 	color: purple;
+	font-weight: bold;
 	width: 100%;
 	padding-top: .5em;
 	margin: 0;
@@ -147,8 +144,8 @@ h2 {
 	background-repeat: no-repeat;
 	background-attachment: absolute;
 	background-position: top left;
-	background-size: 420px 420px;
 	-webkit-background-size: 420px 420px;
+	background-size: 420px 420px;
 	background-color: black;
 	position: absolute;
 	border: 1px solid #ffc;

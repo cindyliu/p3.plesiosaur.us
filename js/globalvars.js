@@ -17,8 +17,8 @@ var DIFFICULTY_LEVELS = [ 3, 4, 5, 6, 7 ];
 
 // To ease workaround for getting element background image scaling
 // to work in IE8 and earlier
-var IE_BGSIZE_HEAD = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='
-var IE_BGSIZE_TAIL = ', sizingMethod=\'scale\');'
+//var IE_BGSIZE_HEAD = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='
+//var IE_BGSIZE_TAIL = ', sizingMethod=\'scale\');'
 
 // What to display to the user when they've solved the puzzle
 var SUCCESS_MESSAGE = 'Congratulations! You solved the puzzle!!';

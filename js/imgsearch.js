@@ -12,9 +12,9 @@
  *  ## This script must be loaded BEFORE puzzle.js. ##
  */
 
-// This is an attempt to clear the search input field when the page is
-// refreshed, but it doesn't work and I eventually gave up trying to fix it.
-$('#image-search-box').val('');
+// This was an attempt to clear the search input field when the page is
+// refreshed, but it didn't work and I eventually gave up trying to fix it.
+//$('#image-search-box').val('');
 
 // Listener for user keypresses in the search input text box
 $('#image-search-box').keyup(function() {
@@ -56,8 +56,6 @@ $('#image-search-pages').on('click', '.unselected-page-number', function() {
 	$('#image-search-pages').children().removeClass('selected-page-number').addClass('unselected-page-number');
 
 	$(this).removeClass('unselected-page-number').addClass('selected-page-number');
-
-//	console.log('Page menu: ' + $(this).text() + ' was clicked');
 
 	displayResults(parseInt($(this).text()));
 
@@ -114,8 +112,6 @@ function displayResults(page_num) {
 
 	$('#image-search-results').html('<small id=\'tip\'>Click on an image below to get started!</small><br>');
 
-//	console.log('Displaying results for: ' + search_term);
-
 	var start_index = (page_num - 1) * 4;
 
 	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&as_filetype=jpg&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
@@ -127,8 +123,6 @@ function displayResults(page_num) {
 	
 		// Only attempt to do the following if we had images...I.e there was more than 0 images
 	    if(images.length > 0){
-			
-//			console.log('Displaying ' + images.length + ' images');
 
 			// .each() is a jQuery method that lets us loop through a set of data. 
 			// So here our data set is images
