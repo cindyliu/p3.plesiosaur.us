@@ -1,12 +1,16 @@
 body {
 	background-color: #333;
+	width: 1430px;
+	height: 780px;
 }
 
 #wrapper {
 	position: relative;
+	float: left;
 	font: 100%/100% 'Trebuchet MS', Verdana, Tahoma, sans-serif;
 	width: 1400px;
-	margin: 10px auto;
+	height: 750px;
+	margin: 15px;
 	text-align: center;
 }
 
@@ -72,8 +76,9 @@ h1 {
 	font-weight: bold;
 	font-size: 3.5em;
 	color: purple;
+	width: 1400;
 	padding: 1em .75em;
-	margin: 0 auto;
+	margin: 0;
 	text-align: left;
 }
 
