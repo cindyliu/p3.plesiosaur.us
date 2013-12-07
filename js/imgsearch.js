@@ -9,7 +9,7 @@
  *    displayResults(page_num)
  *    setupBoard(game_img)
  *
- *  ## This script must be loaded BEFORE puzzle.js. ##
+ *  ### This script must be loaded BEFORE puzzle.js ###
  */
 
 // This was an attempt to clear the search input field when the page is
@@ -61,6 +61,9 @@ $('#image-search-pages').on('click', '.unselected-page-number', function() {
 
 });
 
+// Listener for user making a valid click on an image result
+// Loads the clicked image onto the game board
+// (Valid click means there is no game currently in progress)
 $('#image-search-results').on('click', '.image-result', function() {
 
 	if(!game_on) {
@@ -74,18 +77,25 @@ $('#image-search-results').on('click', '.image-result', function() {
 });
 
 
+/**************************** FUNCTIONS ****************************/
 
+// Boy, I'm really creative with my function names.
 function doImageSearch() {
 
+	// Grab user's search input
 	search_term = $.trim($('#image-search-box').val());
 
+	// Make sure it is not nothing
 	if(search_term == '') {
 		$('#search-error').html('<small>Search field cannot be blank.</small>');
 		return;
 	}
 
+	// Do the search and display the results
 	displayResults(1);
 
+	// Forms the little menu at the bottom that lets you "scroll" between
+	// "pages" of results
 	$('#image-search-pages').html('');
 	$.each(SEARCH_PAGE_NUMBERS, function(key, value) {
 
@@ -108,13 +118,17 @@ function doImageSearch() {
 
 }
 
-
+// Does the image search and displays results based on the page number passed to it
 function displayResults(page_num) {
 
+	// Bit of instruction because this was apparently not immediately apparent to all
 	$('#image-search-results').html('<small id=\'tip\'>Click on an image below to get started!</small><br>');
 
+	// Which results index to start displaying at
 	var start_index = (page_num - 1) * 4;
 
+	/***************************** BEGIN CLASS CODE *****************************/
+	// I basically kept everything the same.
 	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&as_filetype=jpg&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
 
 	$.getJSON(search_url, function(data){
@@ -136,6 +150,8 @@ function displayResults(page_num) {
 	        	// Now put the new image in our results div
 	            $('#image-search-results').append(new_image_element);
 
+	            // This was added to prevent broken images from appearing.
+	            // Code was suggested by Dan Schultz.
 	            $('img').error(function() {
 	            	$(this).hide();
 	            });
@@ -145,7 +161,8 @@ function displayResults(page_num) {
 	});
 }
 
-
+// Initializes the board so that there aren't any tiles or error
+// messages still floating around
 function setupBoard(game_img, cbfunc) {
 
 	$('.tile').fadeOut(function() {

@@ -13,8 +13,6 @@ var SEARCH_PAGE_NUMBERS = ['1','2','3','4','5','6','7','8'];
 // the lowest common multiple of 3, 4, 5, 6, and 7
 var CANVAS_SIZE = 420;
 
-var DIFFICULTY_LEVELS = [ 3, 4, 5, 6, 7 ];
-
 // To ease workaround for getting element background image scaling
 // to work in IE8 and earlier
 //var IE_BGSIZE_HEAD = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='

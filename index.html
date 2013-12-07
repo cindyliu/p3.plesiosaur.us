@@ -1,3 +1,10 @@
+<!-- 
+  --  p3.plesiosaur.us
+  --
+  --  Created by Cindy Liu
+  --  for Harvard Extension School CSCI E-15 Fall 2013
+  -->
+
 <!DOCTYPE html>
 <html>
 
@@ -5,19 +12,21 @@
 	<title>It's a TRAP!</title>
 
 	<link rel="stylesheet" href="css/puzzle.css" type="text/css">
-<!--	<link rel="stylesheet" href="css/puzzle-features.css" type="text/css">
--->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="js/globalvars.js"></script>
 </head>
 
 <body>
+
+	<!-- Wrap the entire game because a lot of it depends on x,y-positioning -->
 	<div id="wrapper">
 		<h1>
 			It's a TRAP!!!<br><br>
 			<small>(A Tile-based Requestable Arrangement Puzzle, that is!)</small>
 		</h1>
+
+		<!-- The sidebar-ish area where image searching is done -->
 		<div id="image-picker-wrapper">
 			<h2>First, pick an image:</h2>
 			<div class="user-input">
@@ -42,6 +51,8 @@
 			<br><br>
 			<div id="image-search-pages"></div>
 		</div>
+
+		<!-- The game playing area, with space for tiles, the board, and controls -->
 		<div id="puzzle-board-wrapper">
 			<h2>Then, play the game!</h2>
 			<div id='message'></div>
@@ -61,6 +72,7 @@
 		</div>
 	</div>
 
+	<!-- Do the magic -->
 	<script src="js/imgsearch.js"></script>
 	<script src="js/puzzle.js"></script>
 

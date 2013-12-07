@@ -1,3 +1,6 @@
+
+/*** MAJOR PAGE ELEMENTS ***/
+
 body {
 	background-color: #333;
 	width: 1430px;
@@ -45,35 +48,6 @@ body {
 	overflow: hidden;
 }
 
-#image-selected {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 420px;
-	height: 420px;
-	padding: 0;
-	margin: 0;
-}
-
-#tip {
-	color: purple;
-	font-weight: bold;
-}
-
-input[type=text] {
-	background-color: #edf;
-	border: 2px solid purple;
-	border-radius: 5px;
-	height: 20px;
-	width: 20em;
-	margin-top: 1em;
-}
-
-#difficulty {
-	display: block;
-	padding-top: 10px;
-}
-
 h1 {
 	background-color: #ffc;
 	font-weight: bold;
@@ -85,10 +59,6 @@ h1 {
 	text-align: left;
 }
 
-h1 small {
-	font-size: .5em;
-}
-
 h2 {
 	font-weight: bold;
 	padding-top: 1em;
@@ -96,18 +66,28 @@ h2 {
 	margin: 0;
 }
 
-#puzzle-board-wrapper h2 {
-	color: #ffc;
+/*** PAGE FEATURE ELEMENTS ***/
+
+h1 small {
+	font-size: .5em;
 }
 
-#message {
-	position: absolute;
-	top: 65px;
-	width: 100%;
+input[type=text] {
+	background-color: #edf;
+	border: 2px solid purple;
+	border-radius: 5px;
+	height: 20px;
+	width: 20em;
+	margin-top: 1em;
 }
 
 #search-error {
 	color: red;
+}
+
+#tip {
+	color: purple;
+	font-weight: bold;
 }
 
 .image-result {
@@ -139,6 +119,43 @@ h2 {
 	font-weight: bold;
 }
 
+#puzzle-board-wrapper h2 {
+	color: #ffc;
+}
+
+#message {
+	position: absolute;
+	top: 65px;
+	width: 100%;
+}
+
+#success {
+	color: #dfe;
+	font-weight: bold;
+	font-size: 800;
+}
+
+#quit {
+	color: #def;
+	font-weight: bold;
+	font-size: 600;
+}
+
+#image-selected {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 420px;
+	height: 420px;
+	padding: 0;
+	margin: 0;
+}
+
+#difficulty {
+	display: block;
+	padding-top: 10px;
+}
+
 .tile {
 	background-image: inherit;
 	background-repeat: no-repeat;
@@ -157,20 +174,9 @@ h2 {
 	background-color: black;
 }
 
-#success {
-	color: #dfe;
-	font-weight: bold;
-	font-size: 800;
-}
-
-#quit {
-	color: #def;
-	font-weight: bold;
-	font-size: 600;
-}
 
 /*-------------------------------------------------------------------------------------------------
-Buttons
+Buttons - BEGIN CLASS CODE
 -------------------------------------------------------------------------------------------------*/
 input[type=button] {
   background-color: #7f4dbf;
@@ -214,7 +220,9 @@ input[type=button]:active {
     -webkit-box-shadow: inset 0 0 8px 4px #54298c, 0 1px 0 0 #eeeeee;
     box-shadow: inset 0 0 8px 4px #54298c, 0 1px 0 0 #eeeeee; 
 }
-
+/*-------------------------------------------------------------------------------------------------
+END CLASS CODE (but below is still buttons)
+-------------------------------------------------------------------------------------------------*/
 
 #start-button, #quit-button, #reset-button {
 	float: bottom;
