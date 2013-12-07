@@ -13,6 +13,8 @@ var SEARCH_PAGE_NUMBERS = ['1','2','3','4','5','6','7','8'];
 // the lowest common multiple of 3, 4, 5, 6, and 7
 var CANVAS_SIZE = 420;
 
+var DIFFICULTY_LEVELS = [ 3, 4, 5, 6, 7 ];
+
 // To ease workaround for getting element background image scaling
 // to work in IE8 and earlier
 var IE_BGSIZE_HEAD = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='
@@ -23,10 +25,6 @@ var SUCCESS_MESSAGE = 'Congratulations! You solved the puzzle!!';
 
 // Holds the user input from the search text box
 var search_term = null;
-
-// 5x5 board; hoping to eventually have option to pick
-// board size of 3x3, 4x4, 5x5, 6x6, or 7x7
-var board_size = 3;
 
 // Stores the number of tiles that have been correctly placed
 var tiles_done = 0;

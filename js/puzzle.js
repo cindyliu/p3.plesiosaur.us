@@ -1,12 +1,22 @@
 
+// 5x5 board; hoping to eventually have option to pick
+// board size of 3x3, 4x4, 5x5, 6x6, or 7x7
+var board_size = 3;
+
+
 $('#game-controls').on('click', '#start-button', function() {
 //console.log('start button clicked');
 	if(($('#board-canvas').html()) != '') {
 		game_on = true;
 //console.log('game is on');
+		$('#difficulty').hide();
 		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
 								/*+'<input type="button" id="reset-button" value="Reset puzzle">'*/);
 //console.log('game buttons changed');
+		$('#message').html('');
+
+		board_size = $('#difficulty').children().val();
+//		board_size = $('#difficulty').options[$('#difficulty').selectedIndex].value;
 		startGame();
 
 //		console.log('Puzzle started');
@@ -29,6 +39,7 @@ $('#game-controls').on('click', '#quit-button', function() {
 	var game_img = $('#image-selected');
 	game_img.fadeIn(setupBoard(game_img));
 	
+	$('#difficulty').show();
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
 
 	if($('#message').html() == 0) {
@@ -41,11 +52,10 @@ $('#game-controls').on('click', '#quit-button', function() {
  *   where x = board_size * board_size;
  */
 function startGame() {
-//console.log('inside startGame()');
+
 	var game_img = $('#image-selected');
-//console.log('got game_img');
 	game_img.fadeOut(doTiles(game_img));
-//console.log('tiles done');
+
 }
 
 function doTiles(bg) {
@@ -56,6 +66,7 @@ function doTiles(bg) {
 	var right_side_offset = right_border + piece_size + CANVAS_SIZE;
 	var tile_num = 0;
 	var x, y, bgx, bgy;
+	tiles_done = 0;
 	
 //	console.log('Piece size = ' + piece_size);
 
@@ -80,6 +91,7 @@ function doTiles(bg) {
 
 	if(tile_num != (board_size * board_size)) {
 		alert('Error: Please reload the page to start over. (final tile_num != board_size^2)')
+		console.log(tile_num, board_size);
 	}
 
 	$('.grid').droppable({
@@ -104,7 +116,8 @@ function doTiles(bg) {
 		containment: '#puzzle-board-wrapper',
 		cursor: 'crosshair',
 		snap: '.grid',
-		snapMode: 'inner'
+		snapMode: 'inner',
+		stack: '.tile'
 	});
 
 }
@@ -122,7 +135,9 @@ function doTileImage(tile, bg_src, bg_x_pos, bg_y_pos) {
 function doPuzzleSolved() {
 	var game_img = $('#image-selected');
 	game_img.fadeIn(setupBoard(game_img));
+	$('#difficulty').show();
 	$('#game-controls').html('<input type="button" id="start-button" value="Play again!">');
 	$('#message').html('<span id="success">' + SUCCESS_MESSAGE + '</span>');
+	game_on = false;
 	alert(SUCCESS_MESSAGE);
 }

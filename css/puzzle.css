@@ -17,7 +17,7 @@ body {
 #image-picker-wrapper, #puzzle-board-wrapper {
 	position: relative;
 	float: left;
-	height: 600px;
+	height: 650px;
 	padding: 1px;
 	overflow: hidden;
 }
@@ -71,6 +71,11 @@ input[type=text] {
 	margin-top: 1em;
 }
 
+#difficulty {
+	display: block;
+	padding-top: 10px;
+}
+
 h1 {
 	background-color: #ffc;
 	font-weight: bold;
@@ -112,17 +117,19 @@ h2 {
 	float:left;
 	width: 145px;
 	height: 145px;
-	margin: 1px;
+	margin: 2px;
 	cursor: pointer;
 }
 
 #image-search-pages {
-	position: absolute;
-	font: 100%/100% Courier monospace;
+	display: block;
+	position: relative;
+	float: left;
+	font-weight: bold;
 	color: purple;
-	bottom: 10px;
 	width: 100%;
-	padding-bottom: 1em;
+	padding-top: .5em;
+	margin: 0;
 }
 
 .unselected-page-number:hover {
