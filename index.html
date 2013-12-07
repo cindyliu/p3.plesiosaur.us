@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Um, pick a title? "Generic Puzzle Game" =P</title>
+	<title>It's a TRAP!</title>
 
 	<link rel="stylesheet" href="css/puzzle.css" type="text/css">
 <!--	<link rel="stylesheet" href="css/puzzle-features.css" type="text/css">
@@ -14,12 +14,19 @@
 
 <body>
 	<div id="wrapper">
-		<h1>So far just Generic Puzzle Game</h1>
+		<h1>
+			It's a TRAP!!!<br><br>
+			<small>(A Tile-based Requestable Arrangement Puzzle, that is!)</small>
+		</h1>
 		<div id="image-picker-wrapper">
-			<h2>Pick an image</h2>
+			<h2>First, pick an image:</h2>
 			<div class="user-input">
-				<h3>Google Image Search:</h3>
-				<input id="image-search-box" type="text" size="20" maxlength="20">
+				<h3>
+					<small>
+						(via <a href="http://images.google.com">Google Image Search</a>)
+					</small>
+				</h3>
+				<input id="image-search-box" type="text" maxlength="20"><br>
 				<input id="image-search-button" type="button" value="Search">
 				<br>
 				<div id="search-error"></div>
@@ -29,14 +36,14 @@
 				</div>
 				<br>
 				<small>Examples: kittens, Nathan Fillion, cuddly</small>
-				<br><br><br><br>
+				<br><br>
 			</div>
 			<div id="image-search-results"></div>
 			<br><br>
 			<div id="image-search-pages"></div>
 		</div>
 		<div id="puzzle-board-wrapper">
-			<h2>Play the game</h2>
+			<h2>Then, play the game!</h2>
 			<div id='message'></div>
 			<div id="board-canvas"></div>
 			<div id='game-controls'>

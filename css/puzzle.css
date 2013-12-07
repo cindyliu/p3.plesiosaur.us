@@ -1,6 +1,10 @@
+body {
+	background-color: #333;
+}
+
 #wrapper {
 	position: relative;
-	font: 100%/100% Verdana, Tahoma, sans-serif;
+	font: 100%/100% 'Trebuchet MS', Verdana, Tahoma, sans-serif;
 	width: 1400px;
 	margin: 10px auto;
 	text-align: center;
@@ -15,16 +19,15 @@
 }
 
 #image-picker-wrapper {
-	background-color: #ccc;
-	width: 294px;
+	background-color: #ffc;
+	width: 298px;
 /*	border: solid 2px blue; */
 }
 
 #puzzle-board-wrapper {
 	position: relative;
-	background-color: #dcb;
-	width: 1094px;
-/*	border: solid 2px red; */
+	background-color: #666;
+	width: 1098px;
 	overflow: hidden;
 }
 
@@ -35,7 +38,7 @@
 	width: 420px;
 	height: 420px;
 	padding: 0;
-	margin: 4em auto 0 auto;
+	margin: 5em auto 0 auto;
 /*	border: 1px solid green;
 	overflow: hidden; */
 }
@@ -50,21 +53,44 @@
 	margin: 0;
 }
 
-h1 {
-	background-color: #ffa;
-	font-weight: bold;
+#tip {
 	color: purple;
-	padding: 1em;
+	font-weight: bold;
+}
+
+input[type=text] {
+	background-color: #edf;
+	border: 2px solid purple;
+	border-radius: 5px;
+	height: 20px;
+	width: 20em;
+	margin-top: 1em;
+}
+
+h1 {
+	background-color: #ffc;
+	font-weight: bold;
+	font-size: 3.5em;
+	color: purple;
+	padding: 1em .75em;
 	margin: 0 auto;
-/*	border: solid 2px purple; */
+	text-align: left;
+}
+
+h1 small {
+	font-size: .5em;
 }
 
 h2 {
 	font-weight: bold;
-	padding: .5em;
-	color: maroon;
+	padding-top: 1em;
+	color: #555;
 	margin: 0;
 /*	border: solid 1px black; */
+}
+
+#puzzle-board-wrapper h2 {
+	color: #ffc;
 }
 
 #message {
@@ -87,11 +113,11 @@ h2 {
 
 #image-search-pages {
 	position: absolute;
-	font: 100%/100% 'System' monospace;
+	font: 100%/100% Courier monospace;
 	color: purple;
 	bottom: 10px;
 	width: 100%;
-	padding-bottom: 2em;
+	padding-bottom: 1em;
 }
 
 .unselected-page-number:hover {
@@ -111,16 +137,28 @@ h2 {
 	background-position: top left;
 	background-size: 420px 420px;
 	-webkit-background-size: 420px 420px;
+	background-color: black;
 	position: absolute;
-	border: solid 1px blue;
+	border: 1px solid #ffc;
 	overflow: hidden;
 }
 
 .grid {
 	float: left;
-/*	border: solid 1px green; */
+	background-color: black;
 }
 
+#success {
+	color: #dfe;
+	font-weight: bold;
+	font-size: 800;
+}
+
+#quit {
+	color: #def;
+	font-weight: bold;
+	font-size: 600;
+}
 
 /*-------------------------------------------------------------------------------------------------
 Buttons
@@ -171,6 +209,10 @@ input[type=button]:active {
 
 #start-button, #quit-button, #reset-button {
 	float: bottom;
+	margin: 1em;
+}
+
+#image-search-button {
 	margin: 1em;
 }
 

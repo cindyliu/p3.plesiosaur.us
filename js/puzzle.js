@@ -5,14 +5,14 @@ $('#game-controls').on('click', '#start-button', function() {
 		game_on = true;
 //console.log('game is on');
 		$('#game-controls').html('<input type="button" id="quit-button" value="Quit this game">'
-								+'<input type="button" id="reset-button" value="Reset puzzle">');
+								/*+'<input type="button" id="reset-button" value="Reset puzzle">'*/);
 //console.log('game buttons changed');
 		startGame();
 
 //		console.log('Puzzle started');
 	}
 	else {
-		$('#message').css('color', 'red');
+		$('#message').css('color', '#f36');
 		$('#message').html('You must pick an image before you can start the puzzle!');
 	}
 
@@ -31,55 +31,11 @@ $('#game-controls').on('click', '#quit-button', function() {
 	
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
 
-	$('#message').html('Game over!');
-
-});
-
-$('#game-controls').on('click', '#reset-button', function () {
-	$('#message').html('Puzzle reset!');
-});
-
-
-
-$('.grid').droppable({ drop: function(event, ui) {
-console.log('grid.droppable-accept was triggered');
-/*
-	var grid_num = parseInt($(this).attr('id').slice(1));
-	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
-console.log(grid_num, tile_num);
-	if(grid_num == tile_num) {
-		ui.draggable.draggable('option', 'disabled', true);
-		ui.draggable.css('border', '');
-		$(this).droppable('option', 'disabled', true);
-		tiles_done++;
-	}
-
-	if(tiles_done == (board_size * board_size)) {
-		doPuzzleSolved();
-	}
-*/
-} });
-
-/*
-$('.grid').on('drop', function() {
-console.log('grid.droppable-accept was triggered');
-
-	var grid_num = parseInt($(this).attr('id').slice(1));
-	var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
-	if(grid_num == tile_num) {
-		ui.draggable.draggable('option', 'disabled', true);
-		ui.draggable.css('border', '');
-		$(this).droppable('option', 'disabled', true);
-		tiles_done++;
-	}
-
-	if(tiles_done == (board_size * board_size)) {
-		doPuzzleSolved();
+	if($('#message').html() == 0) {
+		$('#message').html('<span id="quit">Game over.</span>');
 	}
 
 });
-*/
-
 
 /* Divides the image on the board into x identical square pieces,
  *   where x = board_size * board_size;
@@ -126,8 +82,30 @@ function doTiles(bg) {
 		alert('Error: Please reload the page to start over. (final tile_num != board_size^2)')
 	}
 
-	$('.grid').droppable({ accept: '.tile', tolerance: 'pointer' });
-	$('.tile').draggable({ containment: '#puzzle-board-wrapper', cursor: 'crosshair', snap: '.grid', snapMode: 'inner' });
+	$('.grid').droppable({
+		accept: '.tile',
+		drop: function(event, ui) {
+			var grid_num = parseInt($(this).attr('id').slice(1));
+			var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
+			if(grid_num == tile_num) {
+				ui.draggable.draggable('widget').offset($(this).droppable('widget').offset());
+				ui.draggable.draggable('option', 'disabled', true);
+				ui.draggable.draggable('widget').css('border', 'none');
+				$(this).droppable('option', 'disabled', true);
+				tiles_done++;
+			}
+
+			if(tiles_done == (board_size * board_size)) {
+				doPuzzleSolved();
+			}
+		}
+	});
+	$('.tile').draggable({
+		containment: '#puzzle-board-wrapper',
+		cursor: 'crosshair',
+		snap: '.grid',
+		snapMode: 'inner'
+	});
 
 }
 
@@ -142,5 +120,9 @@ function doTileImage(tile, bg_src, bg_x_pos, bg_y_pos) {
 }
 
 function doPuzzleSolved() {
-	$('#message').html('Congratulations, you solved the puzzle!');
+	var game_img = $('#image-selected');
+	game_img.fadeIn(setupBoard(game_img));
+	$('#game-controls').html('<input type="button" id="start-button" value="Play again!">');
+	$('#message').html('<span id="success">' + SUCCESS_MESSAGE + '</span>');
+	alert(SUCCESS_MESSAGE);
 }

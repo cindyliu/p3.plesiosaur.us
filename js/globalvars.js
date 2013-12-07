@@ -18,6 +18,9 @@ var CANVAS_SIZE = 420;
 var IE_BGSIZE_HEAD = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='
 var IE_BGSIZE_TAIL = ', sizingMethod=\'scale\');'
 
+// What to display to the user when they've solved the puzzle
+var SUCCESS_MESSAGE = 'Congratulations! You solved the puzzle!!';
+
 // Holds the user input from the search text box
 var search_term = null;
 

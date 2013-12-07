@@ -67,7 +67,7 @@ $('#image-search-results').on('click', '.image-result', function() {
 
 	if(!game_on) {
 		var image_selected = $(this).clone();
-		image_selected.attr('id', 'image-selected');
+		image_selected.attr('id', 'image-selected').removeClass('image-result');
 
 		setupBoard(image_selected);
 	}
@@ -112,7 +112,7 @@ function doImageSearch() {
 
 function displayResults(page_num) {
 
-	$('#image-search-results').html('<small>Click on an image below to get started:</small><br>');
+	$('#image-search-results').html('<small id=\'tip\'>Click on an image below to get started!</small><br>');
 
 //	console.log('Displaying results for: ' + search_term);
 
@@ -151,12 +151,13 @@ function displayResults(page_num) {
 }
 
 
-function setupBoard(game_img) {
+function setupBoard(game_img, cbfunc) {
 
 	$('.tile').fadeOut(function() {
 		$(this).remove();
 	});
 	$('.grid').remove();
+
 	$('#message').html('');
 
 	$('#board-canvas').html(game_img);
