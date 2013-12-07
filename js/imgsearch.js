@@ -67,6 +67,7 @@ $('#image-search-results').on('click', '.image-result', function() {
 		var image_selected = $(this).clone();
 		image_selected.attr('id', 'image-selected').removeClass('image-result');
 
+		$('#start-button').val('Start puzzle!');
 		setupBoard(image_selected);
 	}
 
