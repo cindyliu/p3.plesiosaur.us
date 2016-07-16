@@ -1,4 +1,4 @@
-<!-- 
+<!--
   --  p3.plesiosaur.us
   --
   --  Created by Cindy Liu
@@ -46,6 +46,11 @@
 				<br>
 				<small>Examples: kittens, Nathan Fillion, cuddly</small>
 				<br><br>
+				<div id="alternate-image-search">
+					<small>
+						(Please note: if Google Image Search is not working, <span id="rand-cat-pic">CLICK HERE</span> for a random cat picture)
+					</small>
+				</div>
 			</div>
 			<div id="image-search-results"></div>
 			<br><br>
@@ -57,7 +62,7 @@
 			<h2>Then, play the game!</h2>
 			<div id='message'></div>
 			<div id="board-canvas"></div>
-			<span id='difficulty'>
+			<span class='hidden' id='difficulty'>
 				<select>
 					<option value="3">3 x 3</option>
 					<option value="4">4 x 4</option>
@@ -66,7 +71,7 @@
 					<option value="7">7 x 7</option>
 				</select>
 			</span>
-			<div id='game-controls'>
+			<div class='hidden' id='game-controls'>
 				<input type="button" id="start-button" value="Start puzzle!">
 			</div>
 		</div>

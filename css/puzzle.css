@@ -211,14 +211,14 @@ input[type=button]:hover {
     background-image: linear-gradient(top, #7647b3, #5e2e9e);
     -webkit-box-shadow: inset 0 1px 0 0 #8d67bf;
     box-shadow: inset 0 1px 0 0 #8d67bf;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 input[type=button]:active {
     border: 1px solid #5b2b99;
     border-bottom: 1px solid #53278c;
     -webkit-box-shadow: inset 0 0 8px 4px #54298c, 0 1px 0 0 #eeeeee;
-    box-shadow: inset 0 0 8px 4px #54298c, 0 1px 0 0 #eeeeee; 
+    box-shadow: inset 0 0 8px 4px #54298c, 0 1px 0 0 #eeeeee;
 }
 /*-------------------------------------------------------------------------------------------------
 END CLASS CODE (but below is still buttons)
@@ -233,3 +233,16 @@ END CLASS CODE (but below is still buttons)
 	margin: 1em;
 }
 
+.hidden {
+	visibility: hidden;
+}
+
+#alternate-image-search {
+	color: gray;
+	font-style: italic;
+}
+
+#rand-cat-pic {
+	color: black;
+	font-style: bold;
+}

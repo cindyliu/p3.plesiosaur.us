@@ -70,14 +70,31 @@ $('#image-search-results').on('click', '.image-result', function() {
 		var image_selected = $(this).clone();
 		image_selected.attr('id', 'image-selected').removeClass('image-result');
 
-		$('#start-button').val('Start puzzle!');
-		setupBoard(image_selected);
+		readyBoard(image_selected);
 	}
 
 });
 
+// Listener for user requesting random cat picture because Google Image
+// Search has exceeded the 100-request daily limit, honestly Google
+$('#rand-cat-pic').click(function() {
+	if(!game_on) {
+		var randImgSize = Math.floor(Math.random()*1000) + 1;
+		var imageURL = "http://www.placekitten.com/" + randImgSize + "/" + randImgSize;
+		var image_selected = "<img class='image-result' src='" + imageURL + "'>";
+		readyBoard(image_selected);
+	}
+})
+
 
 /**************************** FUNCTIONS ****************************/
+
+function readyBoard(image_selected) {
+//		$('#start-button').val('Start puzzle!');	// self 3 years later: not sure why this is here
+	$('#difficulty').removeClass('hidden');
+	$('#game-controls').removeClass('hidden');
+	setupBoard(image_selected);
+}
 
 // Boy, I'm really creative with my function names.
 function doImageSearch() {
@@ -112,7 +129,7 @@ function doImageSearch() {
 			$('#image-search-pages').append('');
 		}
 		else {
-			$('#image-search-pages').append(' | ');	
+			$('#image-search-pages').append(' | ');
 		}
 	});
 
@@ -132,21 +149,21 @@ function displayResults(page_num) {
 	var search_url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&as_filetype=jpg&imgsz=medium&start=' + start_index + '&q=' + search_term + '&callback=?';
 
 	$.getJSON(search_url, function(data){
-	
+
 		// This line will basically parse the data we get back from Google into a nice array we can work with
 	    var images = data.responseData.results;
-	
+
 		// Only attempt to do the following if we had images...I.e there was more than 0 images
 	    if(images.length > 0){
 
-			// .each() is a jQuery method that lets us loop through a set of data. 
+			// .each() is a jQuery method that lets us loop through a set of data.
 			// So here our data set is images
 			// Essentially we're unpacking our images we got back from Google
 	        $.each(images, function(key, image) {
-	        
+
 	        	// Create a new image element
 	        	var new_image_element = "<img class='image-result' src='" + image.url + "'>";
-	        	
+
 	        	// Now put the new image in our results div
 	            $('#image-search-results').append(new_image_element);
 
@@ -155,7 +172,7 @@ function displayResults(page_num) {
 	            $('img').error(function() {
 	            	$(this).hide();
 	            });
-	
+
 	        });
 	    }
 	});
@@ -163,7 +180,7 @@ function displayResults(page_num) {
 
 // Initializes the board so that there aren't any tiles or error
 // messages still floating around
-function setupBoard(game_img, cbfunc) {
+function setupBoard(game_img, cbfunc) {		// self 3 years later: why is cbfunc here?
 
 	$('.tile').fadeOut(function() {
 		$(this).remove();
