@@ -246,3 +246,8 @@ END CLASS CODE (but below is still buttons)
 	color: black;
 	font-style: bold;
 }
+
+#rand-cat-pic:hover {
+	background-color: #666;
+	color: #ffd;
+}

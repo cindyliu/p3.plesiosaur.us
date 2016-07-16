@@ -69,15 +69,17 @@ $('#image-search-results').on('click', '.image-result', function() {
 	if(!game_on) {
 		var image_selected = $(this).clone();
 		image_selected.attr('id', 'image-selected').removeClass('image-result');
-
 		readyBoard(image_selected);
 	}
 
 });
 
 // Listener for user requesting random cat picture because Google Image
-// Search has exceeded the 100-request daily limit, honestly Google
+// Search has exceeded the 100-request daily limit, honestly Google why
 $('#rand-cat-pic').click(function() {
+
+console.log("Clicked for random cat pic");
+
 	if(!game_on) {
 		var randImgSize = Math.floor(Math.random()*1000) + 1;
 		var imageURL = "http://www.placekitten.com/" + randImgSize + "/" + randImgSize;
