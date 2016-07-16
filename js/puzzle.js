@@ -56,7 +56,7 @@ $('#game-controls').on('click', '#quit-button', function() {
 	// Clears the board by using its initialize function
 	var game_img = $('#image-selected');
 	game_img.fadeIn(setupBoard(game_img));
-	
+
 	// Replace board layout objects for game initiation
 	$('#difficulty').show();
 	$('#game-controls').html('<input type="button" id="start-button" value="Start puzzle!">');
@@ -155,7 +155,7 @@ function doTiles(bg) {
 			// Get the grid and tile id numbers
 			var grid_num = parseInt($(this).attr('id').slice(1));
 			var tile_num = parseInt($(ui.draggable).attr('id').slice(1));
-			
+
 			// If they match, "snap" the tile into place and prevent it from being
 			// able to be dragged any further. Also remove grid element's droppability.
 			if(grid_num == tile_num) {
@@ -196,7 +196,7 @@ function doTiles(bg) {
 // positioned differently so that only the part that that tile represents is showing.
 // The positional calculations are done in doTiles(), above.
 function doTileImage(tile, bg_src, bg_x_pos, bg_y_pos) {
-	
+
 	var bg_url = 'url(\'' + bg_src + '\')';
 
 	tile.css('background-position', bg_x_pos + 'px ' + bg_y_pos + 'px');
@@ -218,11 +218,11 @@ function doPuzzleSolved() {
 
 	// Replace all the game-starting layout elements
 	$('#difficulty').show();
-	$('#game-controls').html('<input type="button" id="start-button" value="Play again!">');
+	$('#game-controls').html('<input type="button" id="start-button" value="Play this image again!">');
 
 	// Congratulate the player so s/he feels good about him/herself
 	$('#message').html('<span id="success">' + SUCCESS_MESSAGE + '</span>');
-	
+
 	// Allow new images to be loaded onto the board
 	game_on = false;
 

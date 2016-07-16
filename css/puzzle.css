@@ -233,10 +233,6 @@ END CLASS CODE (but below is still buttons)
 	margin: 1em;
 }
 
-.hidden {
-	visibility: hidden;
-}
-
 #alternate-image-search {
 	color: gray;
 	font-style: italic;

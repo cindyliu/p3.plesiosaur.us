@@ -16,6 +16,10 @@
 // refreshed, but it didn't work and I eventually gave up trying to fix it.
 //$('#image-search-box').val('');
 
+// Do not display "Start puzzle!" button or difficulty dropdown until image picked
+$('#difficulty').hide();
+$('#game-controls').hide();
+
 // Listener for user keypresses in the search input text box
 $('#image-search-box').keyup(function() {
 
@@ -92,9 +96,9 @@ console.log("Clicked for random cat pic");
 /**************************** FUNCTIONS ****************************/
 
 function readyBoard(image_selected) {
-//		$('#start-button').val('Start puzzle!');	// self 3 years later: not sure why this is here
-	$('#difficulty').removeClass('hidden');
-	$('#game-controls').removeClass('hidden');
+	$('#start-button').val('Start puzzle!');
+	$('#difficulty').show();
+	$('#game-controls').show();
 	setupBoard(image_selected);
 }
 
