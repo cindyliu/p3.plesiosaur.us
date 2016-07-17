@@ -87,7 +87,7 @@ console.log("Clicked for random cat pic");
 	if(!game_on) {
 		var randImgSize = Math.floor(Math.random()*1000) + 1;
 		var imageURL = "http://www.placekitten.com/" + randImgSize + "/" + randImgSize;
-		var image_selected = "<img class='image-result' src='" + imageURL + "'>";
+		var image_selected = "<img class='image-selected' src='" + imageURL + "'>";
 		readyBoard(image_selected);
 	}
 })
